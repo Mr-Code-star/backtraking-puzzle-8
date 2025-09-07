@@ -69,9 +69,9 @@ def show(state):  # pretty print
     print()
 
 
-start2 = (1,8,3, 2,6,4, 7,0,5)
-moves, states = iddfs(start2)
-print("¿Soluble?", is_solvable(start2))
+start1 = (2,8,3, 1,6,4, 7,0,5) #Cambiar estado inicial 
+moves, states = iddfs(start1)
+print("¿Soluble?", is_solvable(start1))
 
 if moves is None:
     print("No se encontró solución.")
