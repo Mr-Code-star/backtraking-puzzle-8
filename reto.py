@@ -41,26 +41,32 @@ def iddfs(start: Tuple[int, ...], max_depth=60):
     for limit in range(max_depth+1):
         visited: Set[Tuple[int,...]] = set()
         path: List[Tuple[str, Tuple[int,...]]] = []
-        def dfs(s: Tuple[int,...], depth: int) -> bool:
+
+        def backtracking(s: Tuple[int,...], depth: int) -> bool:
             if s == GOAL: 
                 return True
             if depth == limit: 
                 return False
             visited.add(s)
+
             for mv, nxt in neighbors(s):
                 if nxt in visited: 
                     continue
-                path.append((mv, nxt))
-                if dfs(nxt, depth+1): 
+
+                path.append((mv, nxt))   
+                if backtracking(nxt, depth+1): 
                     return True
-                path.pop()
-            visited.remove(s)
+                path.pop()               
+            
+            visited.remove(s)            
             return False
-        if dfs(start, 0):
+
+        if backtracking(start, 0):
             moves = [mv for mv,_ in path]
             states = [start] + [st for _,st in path]
             return moves, states
     return None, None
+
 
 def show(state):  # pretty print
     def ch(v): return "_" if v==0 else str(v)
