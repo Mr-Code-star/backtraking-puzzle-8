@@ -69,7 +69,7 @@ def show(state):  # pretty print
     print()
 
 
-start1 = (2,8,3, 1,6,4, 7,0,5) #Cambiar estado inicial 
+start1 = (1,8,3, 2,6,4, 7,0,5)
 moves, states = iddfs(start1)
 print("¿Soluble?", is_solvable(start1))
 
